@@ -1,0 +1,36 @@
+  <% include _header %>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+
+    <table class= "table table-strip">
+      <tr>
+        <th>Nombre</th>
+        <th>Email</th>
+        <th>Tipo</th>
+        <th>Acción</th>
+      </tr>
+      <%
+    if(viewZombies){
+      viewZombies.forEach(function(zombie){
+        %>
+        <tr>
+        <td><%= zombie.name %></td>
+        <td><%= zombie.email %></td>
+        <td><%= zombie.type %></td>
+        <td>
+          <a href="/zombies/edit/<%= zombie.id%>">
+            <i class="fas fa-edit" title="Actualizar"></i>
+          </a>
+          <a href="/zombies/delete/<%= zombie.id%>">
+            <i class="fas fa-trash" title="Eliminar"></i>
+          </a>
+        </td>
+      </tr>
+        <%
+      });
+      
+    }
+    %>
+    </table>
+
+ <% include _footer %>

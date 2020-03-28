@@ -1,0 +1,38 @@
+<% include ../_header %>
+    <h1><%= title %></h1>
+<p>Welcome to <%= title %></p>
+
+<table class= "table table-strip">
+  <tr>
+    <th>Descripcion</th>
+    <th>Sabor</th>
+    <th>Precio</th>
+    <th>Foto</th>
+    <th>Acción</th>
+  </tr>
+  <%
+if(viewCerebros){
+  viewCerebros.forEach(function(cerebro){
+    %>
+    <tr>
+    <td><%= cerebro.description %></td>
+    <td><%= cerebro.flavor %></td>
+    <td><%= cerebro.price %></td>
+    <td> <img src="imagenes/<%= cerebro.picture %>" alt="" style="width: 20%; height:20%;"></td>
+    <td>
+      <a href="/cerebros/editce/<%= cerebro.id%>">
+        <i class="fas fa-edit" title="Actualizar"></i>
+      </a>
+      <a href="/cerebros/deletece/<%= cerebro.id%>">
+        <i class="fas fa-trash danger" title="Eliminar"></i>
+      </a>
+    </td>
+  </tr>
+    <%
+  });
+  
+}
+%>
+</table>
+
+<% include ../_footer %>
